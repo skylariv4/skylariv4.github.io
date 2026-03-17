@@ -3,43 +3,16 @@
 <head>
   <title>Skylar</title>
 
+  <!-- CLEAN FONT -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
   <style>
     body {
       margin: 0;
+      background: #0f0f0f;
       color: #eaeaea;
-      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-      overflow-x: hidden;
-      cursor: none;
-    }
-
-    /* ANIMATED BACKGROUND */
-    body::before {
-      content: "";
-      position: fixed;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle at 30% 30%, #1a1a1a, #0d0d0d);
-      animation: moveBg 20s infinite linear;
-      z-index: -1;
-    }
-
-    @keyframes moveBg {
-      0% { transform: translate(0,0); }
-      50% { transform: translate(-10%, -10%); }
-      100% { transform: translate(0,0); }
-    }
-
-    /* CUSTOM CURSOR */
-    .cursor {
-      width: 12px;
-      height: 12px;
-      border: 1px solid #eaeaea;
-      border-radius: 50%;
-      position: fixed;
-      pointer-events: none;
-      transform: translate(-50%, -50%);
-      transition: transform 0.1s ease;
-      z-index: 999;
+      font-family: 'Inter', sans-serif;
+      -webkit-font-smoothing: antialiased;
     }
 
     /* INTRO */
@@ -50,132 +23,148 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background: #0d0d0d;
+      background: #0f0f0f;
       cursor: pointer;
       z-index: 10;
-      transition: 0.6s ease;
+      transition: opacity 0.6s ease;
     }
 
     .intro h1 {
+      font-size: 14px;
       letter-spacing: 3px;
+      font-weight: 400;
       opacity: 0.6;
-      transition: 0.3s;
     }
 
-    .intro:hover h1 {
-      opacity: 1;
-      transform: scale(1.05);
-    }
-
-    /* MAIN */
-    .main {
-      display: none;
-      text-align: center;
+    /* LAYOUT */
+    .container {
+      max-width: 700px;
+      margin: auto;
       padding: 120px 20px;
+      display: none;
       animation: fadeIn 1s ease;
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(25px); }
+      from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
+    /* HERO */
     h1 {
-      font-size: 48px;
+      font-size: 42px;
+      font-weight: 600;
+      margin-bottom: 10px;
     }
 
-    p {
-      opacity: 0.65;
+    .subtitle {
+      opacity: 0.6;
+      font-size: 15px;
     }
 
+    /* SECTION */
     .section {
       margin-top: 80px;
     }
 
-    .card {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.08);
-      backdrop-filter: blur(12px);
-      border-radius: 14px;
-      padding: 25px;
-      margin: 20px auto;
-      max-width: 500px;
-      transition: 0.3s;
+    .section h2 {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      opacity: 0.4;
+      margin-bottom: 20px;
     }
 
-    .card:hover {
-      transform: translateY(-6px) scale(1.01);
+    /* PROJECT LIST */
+    .project {
+      margin-bottom: 20px;
     }
 
+    .project-title {
+      font-weight: 500;
+    }
+
+    .project-desc {
+      opacity: 0.6;
+      font-size: 14px;
+    }
+
+    /* LINKS */
     .links a {
-      margin: 10px;
+      display: block;
+      margin-bottom: 10px;
       color: #eaeaea;
       text-decoration: none;
-      position: relative;
+      opacity: 0.7;
+      transition: 0.2s;
     }
 
-    .links a::after {
-      content: "";
-      position: absolute;
-      width: 0%;
+    .links a:hover {
+      opacity: 1;
+      transform: translateX(5px);
+    }
+
+    /* DIVIDER */
+    .divider {
       height: 1px;
-      bottom: -3px;
-      left: 0;
-      background: #eaeaea;
-      transition: 0.3s;
-    }
-
-    .links a:hover::after {
-      width: 100%;
-    }
-
-    /* MUSIC BUTTON */
-    .music {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      opacity: 0.5;
-      cursor: pointer;
+      background: #1c1c1c;
+      margin: 40px 0;
     }
   </style>
 </head>
 
 <body>
 
-<div class="cursor" id="cursor"></div>
-
+<!-- INTRO -->
 <div class="intro" onclick="enter()">
-  <h1>enter</h1>
+  <h1>ENTER</h1>
 </div>
 
-<div class="main" id="main">
-  <h1>Skylar</h1>
-  <p>building things, one step at a time</p>
+<!-- MAIN -->
+<div class="container" id="main">
 
-  <div class="section card">
-    <p>
-      i like coding, experimenting, and creating random stuff.
-      this is my space.
+  <!-- HERO -->
+  <h1>Skylar</h1>
+  <div class="subtitle">building things on the internet</div>
+
+  <div class="divider"></div>
+
+  <!-- ABOUT -->
+  <div class="section">
+    <h2>about</h2>
+    <p style="opacity:0.7;">
+      i like creating things, experimenting with code,
+      and turning ideas into something real.
     </p>
   </div>
 
-  <div class="section card">
+  <!-- PROJECTS -->
+  <div class="section">
     <h2>projects</h2>
-    <p>chat app — real-time system</p>
-    <p>this site — minimal aesthetic</p>
+
+    <div class="project">
+      <div class="project-title">chat app</div>
+      <div class="project-desc">real-time messaging system built with firebase</div>
+    </div>
+
+    <div class="project">
+      <div class="project-title">this site</div>
+      <div class="project-desc">minimal personal website</div>
+    </div>
+
   </div>
 
+  <!-- LINKS -->
   <div class="section links">
     <h2>links</h2>
+
     <a href="#">github</a>
     <a href="#">discord</a>
     <a href="#">youtube</a>
-  </div>
-</div>
 
-<!-- MUSIC -->
-<audio id="music" src="https://files.catbox.moe/8f3h1c.mp3"></audio>
-<div class="music" onclick="toggleMusic()">♪</div>
+  </div>
+
+</div>
 
 <script>
 function enter() {
@@ -186,21 +175,6 @@ function enter() {
     intro.style.display = "none";
     document.getElementById("main").style.display = "block";
   }, 600);
-}
-
-/* CURSOR */
-const cursor = document.getElementById("cursor");
-
-document.addEventListener("mousemove", e => {
-  cursor.style.left = e.clientX + "px";
-  cursor.style.top = e.clientY + "px";
-});
-
-/* MUSIC */
-function toggleMusic() {
-  const m = document.getElementById("music");
-  if (m.paused) m.play();
-  else m.pause();
 }
 </script>
 
