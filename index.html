@@ -29,6 +29,8 @@
       align-items: center;
       cursor: pointer;
       background: black;
+      z-index: 10;
+      transition: opacity 0.5s;
     }
 
     .main {
@@ -69,8 +71,7 @@
   <button onclick="send()">Send</button>
 </div>
 
-<!-- SCRIPTS AT BOTTOM -->
-
+<!-- Firebase -->
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
@@ -87,8 +88,16 @@ const auth = firebase.auth();
 const db = firebase.firestore();
 
 function enter() {
-  document.querySelector(".intro").style.display = "none";
-  document.getElementById("main").style.display = "block";
+  const intro = document.querySelector(".intro");
+  const main = document.getElementById("main");
+
+  intro.style.pointerEvents = "none";
+  intro.style.opacity = "0";
+
+  setTimeout(() => {
+    intro.style.display = "none";
+    main.style.display = "block";
+  }, 500);
 }
 
 function login() {
@@ -99,7 +108,6 @@ function login() {
   });
 }
 
-<script>
 function send() {
   const input = document.getElementById("msg");
 
@@ -118,8 +126,7 @@ function send() {
 
   input.value = "";
 }
-</script>
-  
+
 db.collection("messages")
   .orderBy("time")
   .onSnapshot(snapshot => {
