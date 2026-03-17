@@ -53,8 +53,23 @@
 
   <button onclick="login()">Login with Google</button>
   <p id="user"></p>
-</div>
 
+
+   <!-- 👇 ADD CHAT HERE -->
+<div style="margin-top:30px;">
+  <h3>Chat</h3>
+
+  <div id="messages" style="
+    height:200px;
+    overflow-y:auto;
+    border:1px solid white;
+    padding:10px;">
+  </div>
+
+  <input id="msg" placeholder="Type message..." />
+  <button onclick="send()">Send</button>
+</div>
+  
 <script>
 function enter() {
   document.querySelector(".intro").style.display = "none";
@@ -71,7 +86,8 @@ particlesJS("particles-js", {
 </script>
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
-
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+  
 <script>
 const firebaseConfig = {
   apiKey: "AIzaSyDNLXgaWzTVpW3fofikKzTzjtaOJcLggaI",
@@ -81,6 +97,7 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
+const db = firebase.firestore();
 </script>
   
   <script>
@@ -91,6 +108,37 @@ function login() {
       "Logged in as " + result.user.displayName;
   });
 }
+</script>
+  <script>
+function send() {
+  const input = document.getElementById("msg");
+  if (!input.value) return;
+
+  db.collection("messages").add({
+    text: input.value,
+    name: auth.currentUser.displayName,
+    time: Date.now()
+  });
+
+  input.value = "";
+}
+</script>
+<script>
+db.collection("messages")
+  .orderBy("time")
+  .onSnapshot(snapshot => {
+    const box = document.getElementById("messages");
+    box.innerHTML = "";
+
+    snapshot.forEach(doc => {
+      const msg = doc.data();
+      const p = document.createElement("p");
+      p.textContent = msg.name + ": " + msg.text;
+      box.appendChild(p);
+    });
+
+    box.scrollTop = box.scrollHeight;
+  });
 </script>
   
 </body>
