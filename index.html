@@ -6,10 +6,40 @@
   <style>
     body {
       margin: 0;
-      background: linear-gradient(180deg, #0d0d0d, #111);
       color: #eaeaea;
       font-family: -apple-system, BlinkMacSystemFont, sans-serif;
       overflow-x: hidden;
+      cursor: none;
+    }
+
+    /* ANIMATED BACKGROUND */
+    body::before {
+      content: "";
+      position: fixed;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at 30% 30%, #1a1a1a, #0d0d0d);
+      animation: moveBg 20s infinite linear;
+      z-index: -1;
+    }
+
+    @keyframes moveBg {
+      0% { transform: translate(0,0); }
+      50% { transform: translate(-10%, -10%); }
+      100% { transform: translate(0,0); }
+    }
+
+    /* CUSTOM CURSOR */
+    .cursor {
+      width: 12px;
+      height: 12px;
+      border: 1px solid #eaeaea;
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      transition: transform 0.1s ease;
+      z-index: 999;
     }
 
     /* INTRO */
@@ -27,8 +57,7 @@
     }
 
     .intro h1 {
-      font-weight: 400;
-      letter-spacing: 2px;
+      letter-spacing: 3px;
       opacity: 0.6;
       transition: 0.3s;
     }
@@ -53,55 +82,36 @@
 
     h1 {
       font-size: 48px;
-      margin-bottom: 10px;
-      letter-spacing: 1px;
     }
 
     p {
       opacity: 0.65;
-      font-size: 15px;
     }
 
     .section {
       margin-top: 80px;
     }
 
-    /* GLASS CARD */
     .card {
       background: rgba(255,255,255,0.03);
       border: 1px solid rgba(255,255,255,0.08);
-      backdrop-filter: blur(10px);
-      border-radius: 12px;
-      padding: 20px;
+      backdrop-filter: blur(12px);
+      border-radius: 14px;
+      padding: 25px;
       margin: 20px auto;
       max-width: 500px;
       transition: 0.3s;
     }
 
     .card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(255,255,255,0.2);
+      transform: translateY(-6px) scale(1.01);
     }
 
-    /* PROJECT */
-    .project {
-      margin-bottom: 15px;
-      text-align: left;
-    }
-
-    .project strong {
-      display: block;
-      margin-bottom: 3px;
-    }
-
-    /* LINKS */
     .links a {
-      display: inline-block;
       margin: 10px;
       color: #eaeaea;
       text-decoration: none;
       position: relative;
-      transition: 0.3s;
     }
 
     .links a::after {
@@ -119,60 +129,53 @@
       width: 100%;
     }
 
-    .links a:hover {
-      opacity: 1;
+    /* MUSIC BUTTON */
+    .music {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      opacity: 0.5;
+      cursor: pointer;
     }
   </style>
 </head>
 
 <body>
 
-<!-- INTRO -->
+<div class="cursor" id="cursor"></div>
+
 <div class="intro" onclick="enter()">
   <h1>enter</h1>
 </div>
 
-<!-- MAIN -->
 <div class="main" id="main">
-
-  <!-- HERO -->
   <h1>Skylar</h1>
   <p>building things, one step at a time</p>
 
-  <!-- ABOUT -->
   <div class="section card">
     <p>
       i like coding, experimenting, and creating random stuff.
-      this is just my space on the internet.
+      this is my space.
     </p>
   </div>
 
-  <!-- PROJECTS -->
   <div class="section card">
     <h2>projects</h2>
-
-    <div class="project">
-      <strong>chat app</strong>
-      <p>a real-time chat system i built using firebase</p>
-    </div>
-
-    <div class="project">
-      <strong>this website</strong>
-      <p>minimal personal site inspired by cuzsie</p>
-    </div>
+    <p>chat app — real-time system</p>
+    <p>this site — minimal aesthetic</p>
   </div>
 
-  <!-- LINKS -->
   <div class="section links">
     <h2>links</h2>
-
     <a href="#">github</a>
     <a href="#">discord</a>
     <a href="#">youtube</a>
-
   </div>
-
 </div>
+
+<!-- MUSIC -->
+<audio id="music" src="https://files.catbox.moe/8f3h1c.mp3"></audio>
+<div class="music" onclick="toggleMusic()">♪</div>
 
 <script>
 function enter() {
@@ -183,6 +186,21 @@ function enter() {
     intro.style.display = "none";
     document.getElementById("main").style.display = "block";
   }, 600);
+}
+
+/* CURSOR */
+const cursor = document.getElementById("cursor");
+
+document.addEventListener("mousemove", e => {
+  cursor.style.left = e.clientX + "px";
+  cursor.style.top = e.clientY + "px";
+});
+
+/* MUSIC */
+function toggleMusic() {
+  const m = document.getElementById("music");
+  if (m.paused) m.play();
+  else m.pause();
 }
 </script>
 
