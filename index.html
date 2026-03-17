@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Skylariv4's Website</title>
+  <title>Skylar</title>
   <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
 
   <style>
@@ -10,7 +10,21 @@
       font-family: 'Segoe UI', sans-serif;
       background: black;
       color: white;
-      overflow-x: hidden;
+      overflow: hidden;
+      cursor: none;
+    }
+
+    /* CUSTOM CURSOR */
+    .cursor {
+      width: 10px;
+      height: 10px;
+      background: white;
+      position: fixed;
+      border-radius: 50%;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      transition: 0.05s;
+      z-index: 999;
     }
 
     #particles-js {
@@ -20,57 +34,53 @@
       z-index: -1;
     }
 
-    .main {
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
+    .center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       text-align: center;
       animation: fadeIn 2s ease;
     }
 
     h1 {
       font-size: 60px;
-      letter-spacing: 5px;
+      letter-spacing: 6px;
     }
 
-    p {
-      opacity: 0.6;
+    .typing {
+      opacity: 0.7;
       margin-top: 10px;
+      font-size: 18px;
+      border-right: 2px solid white;
+      display: inline-block;
+      padding-right: 5px;
+      animation: blink 1s infinite;
     }
 
-    .btn {
-      margin-top: 25px;
-      padding: 10px 25px;
-      border: 1px solid white;
-      background: transparent;
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+
+    .socials {
+      margin-top: 30px;
+    }
+
+    .socials a {
       color: white;
-      cursor: pointer;
+      margin: 0 10px;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
       transition: 0.3s;
     }
 
-    .btn:hover {
-      background: white;
-      color: black;
-    }
-
-    .section {
-      padding: 100px 20px;
-      text-align: center;
-      opacity: 0;
-      transform: translateY(50px);
-      transition: 1s;
-    }
-
-    .section.show {
-      opacity: 1;
-      transform: translateY(0);
+    .socials a:hover {
+      border-bottom: 1px solid white;
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+      from { opacity: 0; transform: translate(-50%, -60%); }
+      to { opacity: 1; transform: translate(-50%, -50%); }
     }
   </style>
 </head>
@@ -78,50 +88,51 @@
 <body>
 
 <div id="particles-js"></div>
+<div class="cursor" id="cursor"></div>
 
-<div class="main">
-  <h1>Skylariv4's Website</h1>
-  <button class="btn" onclick="scrollDown()">Enter</button>
-</div>
+<div class="center">
+  <h1>SKYLAR</h1>
+  <div class="typing" id="typing"></div>
 
-<div class="section">
-  <h2>About</h2>
-  <p>READ ME! 
-    I build cool things on the internet
-  I Code Lua And C++,Contributed In A Lot Of Projects
-  WEBSITE STATUS : WIP</p>
-</div>
-
-<div class="section">
-  <h2>Projects</h2>
-  <p>More coming soon...</p>
+  <div class="socials">
+    <a href="#">Discord</a>
+    <a href="#">GitHub</a>
+    <a href="#">TikTok</a>
+  </div>
 </div>
 
 <script>
-  function scrollDown() {
-    window.scrollTo({ top: window.innerHeight, behavior: "smooth" });
-  }
-
-  // particles config (clean + subtle)
+  // PARTICLES (super subtle like that site)
   particlesJS("particles-js", {
     particles: {
-      number: { value: 50 },
+      number: { value: 40 },
       size: { value: 2 },
-      move: { speed: 1 },
+      move: { speed: 0.8 },
+      opacity: { value: 0.3 },
       line_linked: { enable: false }
     }
   });
 
-  // scroll animation
-  const sections = document.querySelectorAll(".section");
+  // TYPING EFFECT
+  const text = "welcome to my space...";
+  let i = 0;
 
-  window.addEventListener("scroll", () => {
-    sections.forEach(sec => {
-      const top = sec.getBoundingClientRect().top;
-      if (top < window.innerHeight - 100) {
-        sec.classList.add("show");
-      }
-    });
+  function type() {
+    if (i < text.length) {
+      document.getElementById("typing").innerHTML += text.charAt(i);
+      i++;
+      setTimeout(type, 50);
+    }
+  }
+
+  type();
+
+  // CUSTOM CURSOR
+  const cursor = document.getElementById("cursor");
+
+  document.addEventListener("mousemove", e => {
+    cursor.style.left = e.clientX + "px";
+    cursor.style.top = e.clientY + "px";
   });
 </script>
 
