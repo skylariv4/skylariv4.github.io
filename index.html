@@ -34,7 +34,15 @@
     .main {
       display: none;
       text-align: center;
-      margin-top: 40vh;
+      margin-top: 30vh;
+    }
+
+    #messages {
+      height: 200px;
+      overflow-y: auto;
+      border: 1px solid white;
+      padding: 10px;
+      margin: 10px;
     }
   </style>
 </head>
@@ -54,40 +62,19 @@
   <button onclick="login()">Login with Google</button>
   <p id="user"></p>
 
-
-   <!-- 👇 ADD CHAT HERE -->
-<div style="margin-top:30px;">
   <h3>Chat</h3>
-
-  <div id="messages" style="
-    height:200px;
-    overflow-y:auto;
-    border:1px solid white;
-    padding:10px;">
-  </div>
+  <div id="messages"></div>
 
   <input id="msg" placeholder="Type message..." />
   <button onclick="send()">Send</button>
 </div>
-  
-<script>
-function enter() {
-  document.querySelector(".intro").style.display = "none";
-  document.getElementById("main").style.display = "block";
-}
 
-particlesJS("particles-js", {
-  particles: {
-    number: { value: 40 },
-    size: { value: 2 },
-    move: { speed: 1 }
-  }
-});
-</script>
+<!-- SCRIPTS AT BOTTOM -->
+
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
-  
+
 <script>
 const firebaseConfig = {
   apiKey: "AIzaSyDNLXgaWzTVpW3fofikKzTzjtaOJcLggaI",
@@ -98,9 +85,12 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 const db = firebase.firestore();
-</script>
-  
-  <script>
+
+function enter() {
+  document.querySelector(".intro").style.display = "none";
+  document.getElementById("main").style.display = "block";
+}
+
 function login() {
   const provider = new firebase.auth.GoogleAuthProvider();
   auth.signInWithPopup(provider).then(result => {
@@ -108,8 +98,7 @@ function login() {
       "Logged in as " + result.user.displayName;
   });
 }
-</script>
-  <script>
+
 function send() {
   const input = document.getElementById("msg");
   if (!input.value) return;
@@ -122,8 +111,7 @@ function send() {
 
   input.value = "";
 }
-</script>
-<script>
+
 db.collection("messages")
   .orderBy("time")
   .onSnapshot(snapshot => {
@@ -139,7 +127,15 @@ db.collection("messages")
 
     box.scrollTop = box.scrollHeight;
   });
+
+particlesJS("particles-js", {
+  particles: {
+    number: { value: 40 },
+    size: { value: 2 },
+    move: { speed: 1 }
+  }
+});
 </script>
-  
+
 </body>
 </html>
