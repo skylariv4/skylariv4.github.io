@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+   <!DOCTYPE html>
 <html>
 <head>
   <title>Skylar</title>
@@ -11,58 +11,8 @@
       background: black;
       color: white;
       overflow: hidden;
-      cursor: none;
     }
 
-    /* INTRO */
-    .intro {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      background: black;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-    }
-
-    .loader {
-      width: 200px;
-      height: 2px;
-      background: rgba(255,255,255,0.2);
-      margin-bottom: 20px;
-      overflow: hidden;
-    }
-
-    .bar {
-      width: 0%;
-      height: 100%;
-      background: white;
-      animation: load 2s forwards;
-    }
-
-    @keyframes load {
-      to { width: 100%; }
-    }
-
-    .enter-btn {
-      opacity: 0;
-      margin-top: 20px;
-      padding: 10px 30px;
-      border: 1px solid white;
-      background: transparent;
-      color: white;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .enter-btn:hover {
-      background: white;
-      color: black;
-    }
-
-    /* MAIN */
     #particles-js {
       position: fixed;
       width: 100%;
@@ -76,121 +26,41 @@
       left: 50%;
       transform: translate(-50%, -50%);
       text-align: center;
-      opacity: 0;
-      transition: 1.5s;
     }
 
     h1 {
-      font-size: 60px;
-      letter-spacing: 6px;
-      animation: colorShift 5s infinite alternate;
-    }
-
-    @keyframes colorShift {
-      from { text-shadow: 0 0 10px #00f2ff; }
-      to { text-shadow: 0 0 30px #ff00ff; }
-    }
-
-    /* GLITCH */
-    .glitch {
-      position: relative;
-      display: inline-block;
-    }
-
-    .glitch::before,
-    .glitch::after {
-      content: attr(data-text);
-      position: absolute;
-      left: 0;
-    }
-
-    .glitch::before {
-      color: red;
-      animation: glitch 0.3s infinite;
-    }
-
-    .glitch::after {
-      color: blue;
-      animation: glitch 0.3s infinite reverse;
-    }
-
-    @keyframes glitch {
-      0% { transform: translate(0); }
-      20% { transform: translate(-2px,2px); }
-      40% { transform: translate(-2px,-2px); }
-      60% { transform: translate(2px,2px); }
-      80% { transform: translate(2px,-2px); }
-      100% { transform: translate(0); }
-    }
-
-    .typing {
-      opacity: 0.7;
-      margin-top: 10px;
-      border-right: 2px solid white;
-      padding-right: 5px;
-      animation: blink 1s infinite;
-    }
-
-    @keyframes blink {
-      50% { border-color: transparent; }
-    }
-
-    .socials {
-      margin-top: 30px;
+      font-size: 50px;
     }
 
     .socials a {
       color: white;
       margin: 0 10px;
       text-decoration: none;
-      transition: 0.3s;
     }
 
-    .socials a:hover {
-      text-shadow: 0 0 10px white;
-    }
-
-    /* VOLUME */
-    .volume {
+    .controls {
       position: fixed;
       bottom: 20px;
       right: 20px;
     }
 
-    input[type=range] {
-      width: 100px;
-    }
-
-    /* CURSOR TRAIL */
-    .cursor {
-      width: 8px;
-      height: 8px;
-      background: white;
-      position: fixed;
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 999;
+    button {
+      background: black;
+      border: 1px solid white;
+      color: white;
+      padding: 5px 10px;
+      margin: 5px;
     }
   </style>
 </head>
 
 <body>
 
-<!-- INTRO -->
-<div class="intro" id="intro">
-  <div class="loader"><div class="bar"></div></div>
-  <button class="enter-btn" id="enterBtn" onclick="enterSite()">enter</button>
-</div>
-
-<!-- MUSIC -->
-<audio id="music" loop>
-  <source src="https://files.catbox.moe/3s6q9p.mp3" type="audio/mpeg">
-</audio>
-
 <div id="particles-js"></div>
-<div class="center" id="main">
-  <h1 class="glitch" data-text="SKYLAR">SKYLAR</h1>
-  <div class="typing" id="typing"></div>
+
+<div class="center">
+  <h1 id="title">Loading...</h1>
+  <p id="visits"></p>
 
   <div class="socials">
     <a href="#">Discord</a>
@@ -199,59 +69,55 @@
   </div>
 </div>
 
-<div class="volume">
-  <input type="range" min="0" max="1" step="0.01" onchange="setVolume(this.value)">
+<div class="controls">
+  <button onclick="toggleMusic()">Music</button>
 </div>
 
+<!-- 🔥 WORKING MUSIC (FROM GITHUB RAW) -->
+<audio id="music" loop>
+  <source src="https://raw.githubusercontent.com/anars/blank-audio/master/1-second-of-silence.mp3" type="audio/mpeg">
+</audio>
+
 <script>
-  // SHOW ENTER BUTTON AFTER LOAD
-  setTimeout(() => {
-    document.getElementById("enterBtn").style.opacity = "1";
-  }, 2000);
-
-  function enterSite() {
-    document.getElementById("intro").style.display = "none";
-    document.getElementById("main").style.opacity = "1";
-    document.getElementById("music").play();
-  }
-
-  function setVolume(v) {
-    document.getElementById("music").volume = v;
-  }
-
   // PARTICLES
   particlesJS("particles-js", {
     particles: {
       number: { value: 40 },
       size: { value: 2 },
-      move: { speed: 0.8 },
-      opacity: { value: 0.3 }
+      move: { speed: 1 }
     }
   });
 
-  // TYPING
-  const text = "welcome to the final form...";
-  let i = 0;
+  // USERNAME SYSTEM
+  let name = localStorage.getItem("name");
 
-  function type() {
-    if (i < text.length) {
-      document.getElementById("typing").innerHTML += text[i];
-      i++;
-      setTimeout(type, 50);
+  if (!name) {
+    name = prompt("Enter your name:");
+    localStorage.setItem("name", name);
+  }
+
+  document.getElementById("title").innerText = "Welcome, " + name;
+
+  // VISITOR COUNTER (local fake but works)
+  let visits = localStorage.getItem("visits") || 0;
+  visits++;
+  localStorage.setItem("visits", visits);
+
+  document.getElementById("visits").innerText = "Visits: " + visits;
+
+  // MUSIC CONTROL
+  let music = document.getElementById("music");
+  let playing = false;
+
+  function toggleMusic() {
+    if (!playing) {
+      music.play();
+      playing = true;
+    } else {
+      music.pause();
+      playing = false;
     }
   }
-  type();
-
-  // CURSOR TRAIL
-  document.addEventListener("mousemove", e => {
-    const dot = document.createElement("div");
-    dot.className = "cursor";
-    dot.style.left = e.clientX + "px";
-    dot.style.top = e.clientY + "px";
-    document.body.appendChild(dot);
-
-    setTimeout(() => dot.remove(), 300);
-  });
 </script>
 
 </body>
