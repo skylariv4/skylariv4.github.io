@@ -14,19 +14,55 @@
       cursor: none;
     }
 
-    /* CUSTOM CURSOR */
-    .cursor {
-      width: 10px;
-      height: 10px;
-      background: white;
+    /* INTRO */
+    .intro {
       position: fixed;
-      border-radius: 50%;
-      pointer-events: none;
-      transform: translate(-50%, -50%);
-      transition: 0.05s;
-      z-index: 999;
+      width: 100%;
+      height: 100%;
+      background: black;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
     }
 
+    .loader {
+      width: 200px;
+      height: 2px;
+      background: rgba(255,255,255,0.2);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+
+    .bar {
+      width: 0%;
+      height: 100%;
+      background: white;
+      animation: load 2s forwards;
+    }
+
+    @keyframes load {
+      to { width: 100%; }
+    }
+
+    .enter-btn {
+      opacity: 0;
+      margin-top: 20px;
+      padding: 10px 30px;
+      border: 1px solid white;
+      background: transparent;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .enter-btn:hover {
+      background: white;
+      color: black;
+    }
+
+    /* MAIN */
     #particles-js {
       position: fixed;
       width: 100%;
@@ -40,20 +76,57 @@
       left: 50%;
       transform: translate(-50%, -50%);
       text-align: center;
-      animation: fadeIn 2s ease;
+      opacity: 0;
+      transition: 1.5s;
     }
 
     h1 {
       font-size: 60px;
       letter-spacing: 6px;
+      animation: colorShift 5s infinite alternate;
+    }
+
+    @keyframes colorShift {
+      from { text-shadow: 0 0 10px #00f2ff; }
+      to { text-shadow: 0 0 30px #ff00ff; }
+    }
+
+    /* GLITCH */
+    .glitch {
+      position: relative;
+      display: inline-block;
+    }
+
+    .glitch::before,
+    .glitch::after {
+      content: attr(data-text);
+      position: absolute;
+      left: 0;
+    }
+
+    .glitch::before {
+      color: red;
+      animation: glitch 0.3s infinite;
+    }
+
+    .glitch::after {
+      color: blue;
+      animation: glitch 0.3s infinite reverse;
+    }
+
+    @keyframes glitch {
+      0% { transform: translate(0); }
+      20% { transform: translate(-2px,2px); }
+      40% { transform: translate(-2px,-2px); }
+      60% { transform: translate(2px,2px); }
+      80% { transform: translate(2px,-2px); }
+      100% { transform: translate(0); }
     }
 
     .typing {
       opacity: 0.7;
       margin-top: 10px;
-      font-size: 18px;
       border-right: 2px solid white;
-      display: inline-block;
       padding-right: 5px;
       animation: blink 1s infinite;
     }
@@ -70,28 +143,53 @@
       color: white;
       margin: 0 10px;
       text-decoration: none;
-      border-bottom: 1px solid transparent;
       transition: 0.3s;
     }
 
     .socials a:hover {
-      border-bottom: 1px solid white;
+      text-shadow: 0 0 10px white;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translate(-50%, -60%); }
-      to { opacity: 1; transform: translate(-50%, -50%); }
+    /* VOLUME */
+    .volume {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+    }
+
+    input[type=range] {
+      width: 100px;
+    }
+
+    /* CURSOR TRAIL */
+    .cursor {
+      width: 8px;
+      height: 8px;
+      background: white;
+      position: fixed;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 999;
     }
   </style>
 </head>
 
 <body>
 
-<div id="particles-js"></div>
-<div class="cursor" id="cursor"></div>
+<!-- INTRO -->
+<div class="intro" id="intro">
+  <div class="loader"><div class="bar"></div></div>
+  <button class="enter-btn" id="enterBtn" onclick="enterSite()">enter</button>
+</div>
 
-<div class="center">
-  <h1>SKYLAR</h1>
+<!-- MUSIC -->
+<audio id="music" loop>
+  <source src="https://files.catbox.moe/3s6q9p.mp3" type="audio/mpeg">
+</audio>
+
+<div id="particles-js"></div>
+<div class="center" id="main">
+  <h1 class="glitch" data-text="SKYLAR">SKYLAR</h1>
   <div class="typing" id="typing"></div>
 
   <div class="socials">
@@ -101,38 +199,58 @@
   </div>
 </div>
 
+<div class="volume">
+  <input type="range" min="0" max="1" step="0.01" onchange="setVolume(this.value)">
+</div>
+
 <script>
-  // PARTICLES (super subtle like that site)
+  // SHOW ENTER BUTTON AFTER LOAD
+  setTimeout(() => {
+    document.getElementById("enterBtn").style.opacity = "1";
+  }, 2000);
+
+  function enterSite() {
+    document.getElementById("intro").style.display = "none";
+    document.getElementById("main").style.opacity = "1";
+    document.getElementById("music").play();
+  }
+
+  function setVolume(v) {
+    document.getElementById("music").volume = v;
+  }
+
+  // PARTICLES
   particlesJS("particles-js", {
     particles: {
       number: { value: 40 },
       size: { value: 2 },
       move: { speed: 0.8 },
-      opacity: { value: 0.3 },
-      line_linked: { enable: false }
+      opacity: { value: 0.3 }
     }
   });
 
-  // TYPING EFFECT
-  const text = "welcome to my space...";
+  // TYPING
+  const text = "welcome to the final form...";
   let i = 0;
 
   function type() {
     if (i < text.length) {
-      document.getElementById("typing").innerHTML += text.charAt(i);
+      document.getElementById("typing").innerHTML += text[i];
       i++;
       setTimeout(type, 50);
     }
   }
-
   type();
 
-  // CUSTOM CURSOR
-  const cursor = document.getElementById("cursor");
-
+  // CURSOR TRAIL
   document.addEventListener("mousemove", e => {
-    cursor.style.left = e.clientX + "px";
-    cursor.style.top = e.clientY + "px";
+    const dot = document.createElement("div");
+    dot.className = "cursor";
+    dot.style.left = e.clientX + "px";
+    dot.style.top = e.clientY + "px";
+    document.body.appendChild(dot);
+
+    setTimeout(() => dot.remove(), 300);
   });
 </script>
 
