@@ -1,47 +1,147 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Cuzsie's Site</title>
-    <link rel="icon" type="image/x-icon" href="/assets/favicon/icon.png">
-    <link rel="stylesheet" href="/styles/main.css">
-    <link rel="stylesheet" href="/styles/bg.css">
-    <meta property="og:url" content="https://cuzsie.github.io/">
-	<meta name="twitter:url" content="https://cuzsie.github.io/">
-	<meta property="og:title" content="Cuzsie's Site">
-	<meta name="twitter:title" content="Cuzsie's Site">
-	<meta property="og:description" content="My site for me to put the random various things I do!">
-	<meta name="twitter:description" content="My site for me to put the random various things I do!">
-	<meta name="description" content="My site for me to put the random various things I do!">
-    <script src="/src/main_page.js "></script>
-    <script src="/src/pages/home.js"></script>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OMORI Fan Page</title>
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
-        .cuzsie-laptop {
-            filter: drop-shadow(10px 10px rgba(0, 0, 0, 0.5));
+        /* Global Styles */
+        body {
+            margin: 0;
+            font-family: 'Press Start 2P', cursive;
+            background: linear-gradient(to bottom, #000000, #1a1a1a);
+            color: #ffffff;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 0, 0, 0.8);
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+            text-shadow: 2px 2px #000;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 10px;
+        }
+
+        nav a {
+            color: #ff4444;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #ffffff;
+        }
+
+        /* Main Section */
+        main {
+            padding: 50px 20px;
+            text-align: center;
+            background: url('https://i.imgur.com/EYqF7ud.png') no-repeat center center/cover;
+            min-height: 80vh;
+        }
+
+        main h2 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #ff4444;
+            text-shadow: 1px 1px #000;
+        }
+
+        main p {
+            font-size: 14px;
+            max-width: 600px;
+            margin: 0 auto;
+            color: #fff;
+            text-shadow: 1px 1px #000;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.9);
+            text-align: center;
+            padding: 20px;
+            font-size: 12px;
+            color: #ff4444;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 20px;
+            color: #ff4444;
+            border: 2px solid #ff4444;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #ff4444;
+            color: #000;
         }
     </style>
 </head>
-<body onload="setupNav();">
-    <div id="content">
-        <div style="display: flex; text-align: center; justify-content: center; align-items: center;" id="top-area">
-            <div class="panel">
-                <p>Hello! I make things sometimes! :3</p>
-                <p>This site is just a place for me to put whatever various things I do!</p>
-                <p>Mostly consists of my info, random silly websites, and file downloads :]</p><br>
-                <p>Please note: <b>this website is VERY UNOPTIMIZED for mobile!</b><br>Things may display wrong or very small!</p><br>
-                 <p>If you find any issues, please let me know in DMs on <a style="color: rgb(40, 160, 255);" href="https://x.com/cuzsie">Twitter</a> or on Discord!</p>
-            </div>
-            <div id="cuzsie-area">
-                <img class="cuzsie-laptop" src="/assets/images/puterguy.gif" onclick="cuzsieClick()">
-            </div>
-        </div>
-        <div style="text-align: center; padding: 0px; padding-top: 6px;" class="panel center-panel">
-            <a class="social-icon" href="https://youtube.com/cuzsie" target="_blank" rel="noopener noreferrer"><img src="/assets/images/socials/youtube.png"></a>
-            <a class="social-icon" href="https://x.com/cuzsie" target="_blank" rel="noopener noreferrer"><img src="/assets/images/socials/twitter.png"></a>
-            <a class="social-icon" href="https://github.com/cuzsie" target="_blank" rel="noopener noreferrer"><img src="/assets/images/socials/github.png"></a>
-            <a class="social-icon" href="https://discord.gg/6aJ33cSEud" target="_blank" rel="noopener noreferrer"><img src="/assets/images/socials/discord.png"></a>
-        </div>
-    </div>
-    <div id="bottom-text">Homepage art by tuc!</div>
+<body>
+    <header>
+        <h1>Welcome to OMORI World</h1>
+    </header>
 
-    <audio id="bonk" src="/assets/audio/squeak.mp3" type="audio/mp3"></audio>
+    <nav>
+        <a href="#about">About</a>
+        <a href="#characters">Characters</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <main>
+        <h2>Explore the surreal universe of OMORI</h2>
+        <p>
+            OMORI is a psychological horror RPG that dives deep into dreams, memories, and emotions. 
+            Navigate between the colorful and dark worlds as you uncover secrets and face your fears.
+        </p>
+        <a href="#about" class="btn">Learn More</a>
+    </main>
+
+    <section id="about" style="padding:50px; text-align:center; background:#111;">
+        <h2>About OMORI</h2>
+        <p>
+            Developed by Omocat, OMORI blends traditional RPG gameplay with unique storytelling and emotional depth. 
+            Its world alternates between light-hearted dreamscapes and haunting nightmares.
+        </p>
+    </section>
+
+    <section id="characters" style="padding:50px; text-align:center; background:#1a1a1a;">
+        <h2>Main Characters</h2>
+        <p>Omori, Sunny, Aubrey, Kel, Hero, Mari, and many mysterious creatures await your journey.</p>
+    </section>
+
+    <section id="gallery" style="padding:50px; text-align:center; background:#111;">
+        <h2>Gallery</h2>
+        <img src="https://i.imgur.com/EYqF7ud.png" alt="OMORI Art" style="max-width:100%; border: 2px solid #ff4444; margin-top:20px;">
+    </section>
+
+    <section id="contact" style="padding:50px; text-align:center; background:#1a1a1a;">
+        <h2>Contact</h2>
+        <p>Fan mail: <a href="mailto:omori@fanpage.com" style="color:#ff4444;">omori@fanpage.com</a></p>
+    </section>
+
+    <footer>
+        &copy; 2026 OMORI Fan Page | Made with ❤️ by a fan
+    </footer>
 </body>
+</html>
