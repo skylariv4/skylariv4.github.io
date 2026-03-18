@@ -3,83 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OMORI Fan Page</title>
+    <title>About Me - OMORI Style</title>
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
-        /* Global Styles */
+        /* GLOBAL STYLES */
         body {
             margin: 0;
             font-family: 'Press Start 2P', cursive;
             background: linear-gradient(to bottom, #000000, #1a1a1a);
-            color: #ffffff;
+            color: #fff;
         }
 
-        /* Header */
+        /* HEADER */
         header {
-            background: rgba(255, 0, 0, 0.8);
-            padding: 20px;
+            background: rgba(255, 0, 0, 0.85);
             text-align: center;
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 24px;
+            padding: 30px 20px;
             text-shadow: 2px 2px #000;
         }
+        header h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+        header p {
+            margin-top: 10px;
+            font-size: 12px;
+            color: #ff9999;
+        }
 
-        /* Navigation */
+        /* NAV */
         nav {
             display: flex;
             justify-content: center;
             background: rgba(255, 255, 255, 0.05);
             padding: 10px;
         }
-
         nav a {
             color: #ff4444;
             text-decoration: none;
             margin: 0 15px;
             transition: 0.3s;
         }
-
         nav a:hover {
             color: #ffffff;
         }
 
-        /* Main Section */
-        main {
-            padding: 50px 20px;
+        /* MAIN SECTIONS */
+        section {
+            padding: 60px 20px;
             text-align: center;
-            background: url('https://i.imgur.com/EYqF7ud.png') no-repeat center center/cover;
-            min-height: 80vh;
         }
-
-        main h2 {
+        section h2 {
             font-size: 20px;
-            margin-bottom: 20px;
             color: #ff4444;
+            margin-bottom: 20px;
             text-shadow: 1px 1px #000;
         }
-
-        main p {
-            font-size: 14px;
+        section p {
             max-width: 600px;
             margin: 0 auto;
-            color: #fff;
+            font-size: 14px;
+            line-height: 1.6;
             text-shadow: 1px 1px #000;
         }
 
-        /* Footer */
-        footer {
-            background: rgba(0, 0, 0, 0.9);
-            text-align: center;
-            padding: 20px;
-            font-size: 12px;
-            color: #ff4444;
-        }
-
-        /* Buttons */
+        /* BUTTONS */
         .btn {
             display: inline-block;
             padding: 10px 20px;
@@ -89,59 +78,85 @@
             text-decoration: none;
             transition: 0.3s;
         }
-
         .btn:hover {
             background: #ff4444;
             color: #000;
+        }
+
+        /* GALLERY / IMAGE */
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 3px solid #ff4444;
+            margin: 20px 0;
+        }
+
+        /* FOOTER */
+        footer {
+            background: rgba(0, 0, 0, 0.9);
+            text-align: center;
+            padding: 20px;
+            font-size: 12px;
+            color: #ff4444;
+        }
+
+        /* DREAMY / OMORI EFFECT */
+        body::before {
+            content: '';
+            position: fixed;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            background: url('https://i.imgur.com/EYqF7ud.png') no-repeat center center/cover;
+            opacity: 0.05;
+            pointer-events: none;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Welcome to OMORI World</h1>
+        <h1>Hello, I’m [Your Name]</h1>
+        <p>Exploring life like an OMORI adventure</p>
     </header>
 
     <nav>
-        <a href="#about">About</a>
-        <a href="#characters">Characters</a>
+        <a href="#about">About Me</a>
+        <a href="#hobbies">Hobbies</a>
         <a href="#gallery">Gallery</a>
         <a href="#contact">Contact</a>
     </nav>
 
-    <main>
-        <h2>Explore the surreal universe of OMORI</h2>
+    <section id="about">
+        <h2>About Me</h2>
+        <img src="https://i.imgur.com/your-avatar.png" alt="Profile Picture" class="profile-img">
         <p>
-            OMORI is a psychological horror RPG that dives deep into dreams, memories, and emotions. 
-            Navigate between the colorful and dark worlds as you uncover secrets and face your fears.
-        </p>
-        <a href="#about" class="btn">Learn More</a>
-    </main>
-
-    <section id="about" style="padding:50px; text-align:center; background:#111;">
-        <h2>About OMORI</h2>
-        <p>
-            Developed by Omocat, OMORI blends traditional RPG gameplay with unique storytelling and emotional depth. 
-            Its world alternates between light-hearted dreamscapes and haunting nightmares.
+            Hi! I’m [Your Name], a [Your Age/Occupation/Student etc.] who loves [interests]. 
+            I enjoy exploring surreal ideas, creating art, and diving into the weird and wonderful world of imagination.
         </p>
     </section>
 
-    <section id="characters" style="padding:50px; text-align:center; background:#1a1a1a;">
-        <h2>Main Characters</h2>
-        <p>Omori, Sunny, Aubrey, Kel, Hero, Mari, and many mysterious creatures await your journey.</p>
+    <section id="hobbies" style="background:#111;">
+        <h2>Hobbies & Interests</h2>
+        <p>
+            I spend my time [list hobbies], listening to music, and exploring games like OMORI for inspiration. 
+            I love mixing dark themes with colorful creativity in my projects.
+        </p>
     </section>
 
-    <section id="gallery" style="padding:50px; text-align:center; background:#111;">
+    <section id="gallery">
         <h2>Gallery</h2>
-        <img src="https://i.imgur.com/EYqF7ud.png" alt="OMORI Art" style="max-width:100%; border: 2px solid #ff4444; margin-top:20px;">
+        <img src="https://i.imgur.com/EYqF7ud.png" alt="Art / Fanstuff" style="max-width:100%; border: 2px solid #ff4444; margin-top:20px;">
     </section>
 
-    <section id="contact" style="padding:50px; text-align:center; background:#1a1a1a;">
-        <h2>Contact</h2>
-        <p>Fan mail: <a href="mailto:omori@fanpage.com" style="color:#ff4444;">omori@fanpage.com</a></p>
+    <section id="contact" style="background:#111;">
+        <h2>Contact Me</h2>
+        <p>Email: <a href="mailto:youremail@example.com" style="color:#ff4444;">youremail@example.com</a></p>
     </section>
 
     <footer>
-        &copy; 2026 OMORI Fan Page | Made with ❤️ by a fan
+        &copy; 2026 [Your Name] | OMORI-inspired Fan Page
     </footer>
 </body>
 </html>
