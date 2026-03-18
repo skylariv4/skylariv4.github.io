@@ -1,138 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me - OMORI Style</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Me</title>
+  
+  <!-- OMORI-style pixel font -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/athul/omori-font/OMORI.css">
+  
+  <style>
+    /* GLOBAL STYLES */
+    body {
+      margin: 0;
+      font-family: 'OMORI', monospace;
+      background: #f8f8f8; /* Whitespace vibe */
+      color: #1a1a1a;
+    }
 
-    <!-- OMORI-like pixel font -->
-    <style>
-        @font-face {
-            font-family: 'OMORI';
-            src: url('https://cdn.jsdelivr.net/gh/athul/omori-font/OMORI.woff2') format('woff2');
-        }
+    header {
+      text-align: center;
+      padding: 60px 20px;
+    }
+    header h1 {
+      font-size: 32px;
+      color: #e53950; /* subtle red accent */
+      margin: 0;
+    }
+    header p {
+      font-size: 14px;
+      color: #555;
+      margin-top: 10px;
+    }
 
-        body {
-            margin: 0;
-            font-family: 'OMORI', monospace;
-            background: linear-gradient(to bottom, #000000, #1a1a1a);
-            color: #fff;
-        }
+    nav {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+    nav a {
+      text-decoration: none;
+      margin: 0 20px;
+      font-size: 14px;
+      color: #e53950;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #1a1a1a;
+    }
 
-        header {
-            background: rgba(255, 0, 0, 0.85);
-            text-align: center;
-            padding: 30px 20px;
-            text-shadow: 2px 2px #000;
-        }
-        header h1 { margin: 0; font-size: 28px; }
-        header p { margin-top: 10px; font-size: 12px; color: #ff9999; }
+    section {
+      max-width: 700px;
+      margin: 0 auto 80px auto;
+      text-align: center;
+    }
+    section h2 {
+      font-size: 22px;
+      color: #e53950;
+      margin-bottom: 20px;
+    }
+    section p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #333;
+    }
 
-        nav {
-            display: flex;
-            justify-content: center;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 10px;
-        }
-        nav a {
-            color: #ff4444;
-            text-decoration: none;
-            margin: 0 15px;
-            transition: 0.3s;
-        }
-        nav a:hover { color: #fff; }
+    .profile-img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 2px solid #e53950;
+      margin-bottom: 20px;
+      object-fit: cover;
+    }
 
-        section {
-            padding: 60px 20px;
-            text-align: center;
-        }
-        section h2 { font-size: 20px; color: #ff4444; margin-bottom: 20px; text-shadow: 1px 1px #000; }
-        section p { max-width: 600px; margin: 0 auto; font-size: 14px; line-height: 1.6; text-shadow: 1px 1px #000; }
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      font-size: 12px;
+      color: #e53950;
+      border-top: 1px solid #ddd;
+    }
 
-        .btn {
-            display: inline-block;
-            padding: 10px 20px;
-            margin-top: 20px;
-            color: #ff4444;
-            border: 2px solid #ff4444;
-            text-decoration: none;
-            transition: 0.3s;
-        }
-        .btn:hover { background: #ff4444; color: #000; }
-
-        .profile-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 3px solid #ff4444;
-            margin: 20px 0;
-            object-fit: cover;
-        }
-
-        footer {
-            background: rgba(0, 0, 0, 0.9);
-            text-align: center;
-            padding: 20px;
-            font-size: 12px;
-            color: #ff4444;
-        }
-
-        /* Dreamy background effect */
-        body::before {
-            content: '';
-            position: fixed;
-            top:0;
-            left:0;
-            width:100%;
-            height:100%;
-            background: url('https://picsum.photos/1920/1080?grayscale') no-repeat center center/cover;
-            opacity: 0.05;
-            pointer-events: none;
-        }
-    </style>
+    /* subtle hover glow effect for buttons/links */
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      color: #e53950;
+      border: 2px solid #e53950;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      margin-top: 20px;
+    }
+    .btn:hover {
+      background: #e53950;
+      color: #f8f8f8;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Hello, I’m [Your Name]</h1>
-        <p>Exploring life like an OMORI adventure</p>
-    </header>
 
-    <nav>
-        <a href="#about">About Me</a>
-        <a href="#hobbies">Hobbies</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#contact">Contact</a>
-    </nav>
+  <header>
+    <h1>[Your Name]</h1>
+    <p>A personal page in a minimal, surreal style</p>
+  </header>
 
-    <section id="about">
-        <h2>About Me</h2>
-        <img src="https://picsum.photos/200/200?random=1" alt="Profile Picture" class="profile-img">
-        <p>
-            Hi! I’m [Your Name], a [Your Age/Occupation] who loves exploring surreal ideas and creative adventures. 
-            I enjoy art, music, and diving into worlds inspired by games like OMORI.
-        </p>
-    </section>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#hobbies">Hobbies</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#contact">Contact</a>
+  </nav>
 
-    <section id="hobbies" style="background:#111;">
-        <h2>Hobbies & Interests</h2>
-        <p>
-            I spend my time [list hobbies], playing games, listening to music, and making art. 
-            I like combining dark themes with playful, colorful creativity.
-        </p>
-    </section>
+  <section id="about">
+    <img src="https://picsum.photos/150?random=1" alt="Profile Picture" class="profile-img">
+    <h2>About Me</h2>
+    <p>Hello! I’m [Your Name], exploring ideas, creating art, and enjoying minimal, surreal aesthetics in everything I do. I like clean designs with subtle hints of color.</p>
+  </section>
 
-    <section id="gallery">
-        <h2>Gallery</h2>
-        <img src="https://picsum.photos/600/400?random=2" alt="OMORI-style Art" style="max-width:100%; border: 2px solid #ff4444; margin-top:20px;">
-    </section>
+  <section id="hobbies">
+    <h2>Hobbies & Interests</h2>
+    <p>I enjoy art, music, storytelling, and experimenting with abstract or minimalist designs. I like mixing calm whitespace layouts with subtle red accents for emphasis.</p>
+  </section>
 
-    <section id="contact" style="background:#111;">
-        <h2>Contact Me</h2>
-        <p>Email: <a href="mailto:youremail@example.com" style="color:#ff4444;">youremail@example.com</a></p>
-    </section>
+  <section id="gallery">
+    <h2>Gallery</h2>
+    <img src="https://picsum.photos/600/400?random=2" alt="Art sample" style="max-width:100%; border: 2px solid #e53950; margin-top:20px;">
+  </section>
 
-    <footer>
-        &copy; 2026 [Your Name] | OMORI-inspired Fan Page
-    </footer>
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:youremail@example.com" style="color:#e53950;">youremail@example.com</a></p>
+  </section>
+
+  <footer>
+    &copy; 2026 [Your Name]
+  </footer>
+
 </body>
 </html>
