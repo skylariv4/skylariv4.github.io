@@ -3,19 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me</title>
-    <!-- OMORI-like Pixel Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <title>About Me - OMORI Style</title>
+
+    <!-- OMORI-like pixel font -->
     <style>
-        /* GLOBAL STYLES */
+        @font-face {
+            font-family: 'OMORI';
+            src: url('https://cdn.jsdelivr.net/gh/athul/omori-font/OMORI.woff2') format('woff2');
+        }
+
         body {
             margin: 0;
-            font-family: 'Press Start 2P', monospace; /* Pixel font like OMORI */
+            font-family: 'OMORI', monospace;
             background: linear-gradient(to bottom, #000000, #1a1a1a);
             color: #fff;
         }
 
-        /* HEADER */
         header {
             background: rgba(255, 0, 0, 0.85);
             text-align: center;
@@ -25,7 +28,6 @@
         header h1 { margin: 0; font-size: 28px; }
         header p { margin-top: 10px; font-size: 12px; color: #ff9999; }
 
-        /* NAV */
         nav {
             display: flex;
             justify-content: center;
@@ -40,12 +42,13 @@
         }
         nav a:hover { color: #fff; }
 
-        /* SECTIONS */
-        section { padding: 60px 20px; text-align: center; }
+        section {
+            padding: 60px 20px;
+            text-align: center;
+        }
         section h2 { font-size: 20px; color: #ff4444; margin-bottom: 20px; text-shadow: 1px 1px #000; }
         section p { max-width: 600px; margin: 0 auto; font-size: 14px; line-height: 1.6; text-shadow: 1px 1px #000; }
 
-        /* BUTTONS */
         .btn {
             display: inline-block;
             padding: 10px 20px;
@@ -57,7 +60,6 @@
         }
         .btn:hover { background: #ff4444; color: #000; }
 
-        /* PROFILE IMAGE */
         .profile-img {
             width: 150px;
             height: 150px;
@@ -67,7 +69,6 @@
             object-fit: cover;
         }
 
-        /* FOOTER */
         footer {
             background: rgba(0, 0, 0, 0.9);
             text-align: center;
@@ -76,7 +77,7 @@
             color: #ff4444;
         }
 
-        /* DREAMY BACKGROUND */
+        /* Dreamy background effect */
         body::before {
             content: '';
             position: fixed;
@@ -84,7 +85,7 @@
             left:0;
             width:100%;
             height:100%;
-            background: url('https://i.imgur.com/Nr0MjvH.png') no-repeat center center/cover;
+            background: url('https://picsum.photos/1920/1080?grayscale') no-repeat center center/cover;
             opacity: 0.05;
             pointer-events: none;
         }
@@ -105,7 +106,7 @@
 
     <section id="about">
         <h2>About Me</h2>
-        <img src="https://i.imgur.com/4AiXzf8.png" alt="Profile Picture" class="profile-img">
+        <img src="https://picsum.photos/200/200?random=1" alt="Profile Picture" class="profile-img">
         <p>
             Hi! I’m [Your Name], a [Your Age/Occupation] who loves exploring surreal ideas and creative adventures. 
             I enjoy art, music, and diving into worlds inspired by games like OMORI.
@@ -122,7 +123,7 @@
 
     <section id="gallery">
         <h2>Gallery</h2>
-        <img src="https://i.imgur.com/ntRzM6L.png" alt="OMORI-style Art" style="max-width:100%; border: 2px solid #ff4444; margin-top:20px;">
+        <img src="https://picsum.photos/600/400?random=2" alt="OMORI-style Art" style="max-width:100%; border: 2px solid #ff4444; margin-top:20px;">
     </section>
 
     <section id="contact" style="background:#111;">
