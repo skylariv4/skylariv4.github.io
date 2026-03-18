@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me - OMORI Style</title>
-    <!-- Google Font -->
+    <title>About Me</title>
+    <!-- OMORI-like Pixel Font -->
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
         /* GLOBAL STYLES */
         body {
             margin: 0;
-            font-family: 'Press Start 2P', cursive;
+            font-family: 'Press Start 2P', monospace; /* Pixel font like OMORI */
             background: linear-gradient(to bottom, #000000, #1a1a1a);
             color: #fff;
         }
@@ -22,15 +22,8 @@
             padding: 30px 20px;
             text-shadow: 2px 2px #000;
         }
-        header h1 {
-            margin: 0;
-            font-size: 28px;
-        }
-        header p {
-            margin-top: 10px;
-            font-size: 12px;
-            color: #ff9999;
-        }
+        header h1 { margin: 0; font-size: 28px; }
+        header p { margin-top: 10px; font-size: 12px; color: #ff9999; }
 
         /* NAV */
         nav {
@@ -45,28 +38,12 @@
             margin: 0 15px;
             transition: 0.3s;
         }
-        nav a:hover {
-            color: #ffffff;
-        }
+        nav a:hover { color: #fff; }
 
-        /* MAIN SECTIONS */
-        section {
-            padding: 60px 20px;
-            text-align: center;
-        }
-        section h2 {
-            font-size: 20px;
-            color: #ff4444;
-            margin-bottom: 20px;
-            text-shadow: 1px 1px #000;
-        }
-        section p {
-            max-width: 600px;
-            margin: 0 auto;
-            font-size: 14px;
-            line-height: 1.6;
-            text-shadow: 1px 1px #000;
-        }
+        /* SECTIONS */
+        section { padding: 60px 20px; text-align: center; }
+        section h2 { font-size: 20px; color: #ff4444; margin-bottom: 20px; text-shadow: 1px 1px #000; }
+        section p { max-width: 600px; margin: 0 auto; font-size: 14px; line-height: 1.6; text-shadow: 1px 1px #000; }
 
         /* BUTTONS */
         .btn {
@@ -78,18 +55,16 @@
             text-decoration: none;
             transition: 0.3s;
         }
-        .btn:hover {
-            background: #ff4444;
-            color: #000;
-        }
+        .btn:hover { background: #ff4444; color: #000; }
 
-        /* GALLERY / IMAGE */
+        /* PROFILE IMAGE */
         .profile-img {
             width: 150px;
             height: 150px;
             border-radius: 50%;
             border: 3px solid #ff4444;
             margin: 20px 0;
+            object-fit: cover;
         }
 
         /* FOOTER */
@@ -101,7 +76,7 @@
             color: #ff4444;
         }
 
-        /* DREAMY / OMORI EFFECT */
+        /* DREAMY BACKGROUND */
         body::before {
             content: '';
             position: fixed;
@@ -109,7 +84,7 @@
             left:0;
             width:100%;
             height:100%;
-            background: url('https://i.imgur.com/EYqF7ud.png') no-repeat center center/cover;
+            background: url('https://i.imgur.com/Nr0MjvH.png') no-repeat center center/cover;
             opacity: 0.05;
             pointer-events: none;
         }
@@ -130,24 +105,24 @@
 
     <section id="about">
         <h2>About Me</h2>
-        <img src="https://i.imgur.com/your-avatar.png" alt="Profile Picture" class="profile-img">
+        <img src="https://i.imgur.com/4AiXzf8.png" alt="Profile Picture" class="profile-img">
         <p>
-            Hi! I’m [Your Name], a [Your Age/Occupation/Student etc.] who loves [interests]. 
-            I enjoy exploring surreal ideas, creating art, and diving into the weird and wonderful world of imagination.
+            Hi! I’m [Your Name], a [Your Age/Occupation] who loves exploring surreal ideas and creative adventures. 
+            I enjoy art, music, and diving into worlds inspired by games like OMORI.
         </p>
     </section>
 
     <section id="hobbies" style="background:#111;">
         <h2>Hobbies & Interests</h2>
         <p>
-            I spend my time [list hobbies], listening to music, and exploring games like OMORI for inspiration. 
-            I love mixing dark themes with colorful creativity in my projects.
+            I spend my time [list hobbies], playing games, listening to music, and making art. 
+            I like combining dark themes with playful, colorful creativity.
         </p>
     </section>
 
     <section id="gallery">
         <h2>Gallery</h2>
-        <img src="https://i.imgur.com/EYqF7ud.png" alt="Art / Fanstuff" style="max-width:100%; border: 2px solid #ff4444; margin-top:20px;">
+        <img src="https://i.imgur.com/ntRzM6L.png" alt="OMORI-style Art" style="max-width:100%; border: 2px solid #ff4444; margin-top:20px;">
     </section>
 
     <section id="contact" style="background:#111;">
