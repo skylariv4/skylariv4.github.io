@@ -90,11 +90,11 @@ body {
   border: 3px solid #b19cd9;
   box-shadow: 0 0 15px rgba(177, 156, 217, 0.5);
   z-index: 1000;
-color: white;
+  color: white;
 }
 
 .socials-tab img {
-  width: 52x;
+  width: 52px;
   height: 52px;
   transition: transform 0.2s ease;
 }
@@ -123,15 +123,16 @@ color: white;
   box-shadow: 0 0 15px rgba(177, 156, 217, 0.5);
   color: white;
   font-family: 'Courier New', monospace;
-  font-size: 10x;      
+  font-size: 24px;      
   line-height: 1.3;     
   white-space: nowrap;  
   z-index: 1000;
 }
+
 @media (max-width: 600px) {
   .Main_Text {
     max-width: 90%;
-    margin: 100px auto 20px auto; /* pushes it down below the socials tab /
+    margin: 100px auto 20px auto; /* pushes it down below the socials tab */
     padding: 15px;
     font-size: 12px;
     line-height: 1.4;
@@ -141,7 +142,7 @@ color: white;
     font-size: 18px;
   }
 
-  .Main_Text h3 {
+  .Main_Text h2 {
     font-size: 14px;
   }
 
@@ -155,14 +156,20 @@ color: white;
     gap: 8px;
   }
 
+  .socials-tab h2 {
+    display: none;
+  }
+
   .socials-tab img {
-    width: 22px;
-    height: 22px;
+    width: 24px;
+    height: 24px;
   }
 
   .Bottom_Left_Text {
-    position: static;   / stops it from floating/overlapping */
+    position: static;   /* stops it from floating/overlapping */
     max-width: 90%;
+    width: auto;
+    white-space: normal;
     margin: 20px auto;
     font-size: 12px;
     padding: 12px;
@@ -201,8 +208,7 @@ color: white;
     <img src="images/youtube.png" alt="YouTube">
   </a>
   <a href="https://www.tiktok.com/@deoxcz" target="_blank">
-    <img src="images/e701fdda0ad0527dce86d75944b67f0a.png
-"alt="TikTok">
+    <img src="images/e701fdda0ad0527dce86d75944b67f0a.png" alt="TikTok">
   </a>
   <a href="https://github.com/skylariv4" target="_blank">
     <img src="images/github.png" alt="GitHub">
