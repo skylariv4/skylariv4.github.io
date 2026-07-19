@@ -129,14 +129,47 @@ color: white;
   z-index: 1000;
 }
 @media (max-width: 600px) {
+  .Main_Text {
+    max-width: 90%;
+    margin: 100px auto 20px auto; /* pushes it down below the socials tab /
+    padding: 15px;
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  .Main_Text h1 {
+    font-size: 18px;
+  }
+
+  .Main_Text h3 {
+    font-size: 14px;
+  }
+
   .socials-tab {
+    position: fixed;
+    top: 10px;
+    bottom: auto;
+    left: 50%;
+    transform: translateX(-50%);
     padding: 6px 10px;
     gap: 8px;
   }
 
   .socials-tab img {
-    width: 24px;
-    height: 24px;
+    width: 22px;
+    height: 22px;
+  }
+
+  .Bottom_Left_Text {
+    position: static;   / stops it from floating/overlapping */
+    max-width: 90%;
+    margin: 20px auto;
+    font-size: 12px;
+    padding: 12px;
+  }
+
+  .Main_audio {
+    padding: 6px;
   }
 }
 </style>
